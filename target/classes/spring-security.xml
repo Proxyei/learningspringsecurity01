@@ -20,13 +20,20 @@
 		<security:intercept-url pattern="index"
 			access="permitAll()" />
 			<!-- 防止登录URL死循环 -->
-			<security:intercept-url pattern="/user/Login" access="permitAll()"/>
+		<security:intercept-url pattern="/user/Login" access="permitAll()"/>
+		<!-- 授权 -->
+		<security:intercept-url pattern="/user/add" access="hasRole('ROLE_A')"/>	
+		<security:intercept-url pattern="/user/delete" access="hasRole('ROLE_A')"/>	
+		<security:intercept-url pattern="/user/list" access="hasRole('ROLE_B')"/>	
+		<security:intercept-url pattern="/user/update" access="hasRole('ROLE_B')"/>	
 		<!-- 拦截所有 ，/*表示一级目录，/**两级目录 -->
 		<security:intercept-url pattern="/**"
 			access="isFullyAuthenticated()" />
 		<!-- <security:http-basic /> -->
 		<!-- 定制登录页面login-page（也就是认证跳转的页面），登录请求URL（也就是usernamepasswordAuthenticationFilter校验的URL） -->
 		<security:form-login login-page="/user/Login" login-processing-url="/user/userLogin"/>
+		<!-- 无权进入的资源 -->
+		<security:access-denied-handler error-page="/error/denied"/>
 		<security:csrf disabled="true"/>
 	</security:http>
 
@@ -35,8 +42,8 @@
 		<security:authentication-provider>
 			<security:user-service>
 				<!-- 用户amdin，密码1，权限是USER角色,必须ROLE_开头 -->
-				<security:user name="a" password="1"
-					authorities="ROLE_USER" />
+				<security:user name="a" password="1" authorities="ROLE_A" />
+				<security:user name="b" password="1" authorities="ROLE_B" />
 			</security:user-service>
 		</security:authentication-provider>
 	</security:authentication-manager>
