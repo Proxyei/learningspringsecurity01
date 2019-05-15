@@ -13,8 +13,22 @@
                         http://www.springframework.org/schema/security 
                         http://www.springframework.org/schema/security/spring-security-4.2.xsd ">
 
+	<!-- springSecurityFilterChain，拦截哪些资源，访问需要的角色、权限 -->
 	<security:http>
+		<!-- 拦截所有 ，/*表示一级目录，/**两级目录 -->
+		<security:intercept-url pattern="/**"
+			access="isFullyAuthenticated()" />
 		<security:http-basic />
 	</security:http>
-	<security:authentication-manager></security:authentication-manager>
+
+	<!-- 认证管理器，存放认证信息 -->
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<!-- 用户amdin，密码1，权限是USER角色,必须ROLE_开头 -->
+				<security:user name="admin" password="1"
+					authorities="ROLE_USER" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
 </beans>
