@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexPage {
 
-	@RequestMapping(value = { "/","index"})
+	@RequestMapping(value = { "/","/index"})
 	public String toIndex(Model model) {
 		model.addAttribute("username", "wei");
 		return "index";

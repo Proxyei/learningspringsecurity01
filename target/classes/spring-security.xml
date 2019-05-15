@@ -16,9 +16,9 @@
 	<!-- springSecurityFilterChain，拦截哪些资源，访问需要的角色、权限 -->
 	<security:http>
 		<security:intercept-url pattern="/"
-			access="isAnonymous()" />
+			access="permitAll()" />
 		<security:intercept-url pattern="index"
-			access="isAnonymous()" />
+			access="permitAll()" />
 			<!-- 防止登录URL死循环 -->
 			<security:intercept-url pattern="/user/Login" access="permitAll()"/>
 		<!-- 拦截所有 ，/*表示一级目录，/**两级目录 -->
