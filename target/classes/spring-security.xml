@@ -31,7 +31,7 @@
 			access="isFullyAuthenticated()" />
 		<!-- <security:http-basic /> -->
 		<!-- 定制登录页面login-page（也就是认证跳转的页面），登录请求URL（也就是usernamepasswordAuthenticationFilter校验的URL） -->
-		<security:form-login login-page="/user/Login" login-processing-url="/user/userLogin"/>
+		<security:form-login login-page="/user/Login" login-processing-url="/user/userLogin" default-target-url="/"/>
 		<!-- 无权进入的资源 -->
 		<security:access-denied-handler error-page="/error/denied"/>
 		<security:csrf disabled="true"/>
