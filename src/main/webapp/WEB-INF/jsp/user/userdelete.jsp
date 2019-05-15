@@ -7,6 +7,6 @@
 <title>删除用户</title>
 </head>
 <body>
-
+<h4>delete</h4>
 </body>
 </html>

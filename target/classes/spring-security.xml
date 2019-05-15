@@ -15,10 +15,15 @@
 
 	<!-- springSecurityFilterChain，拦截哪些资源，访问需要的角色、权限 -->
 	<security:http>
+		<security:intercept-url pattern="/"
+			access="isAnonymous()" />
+		<security:intercept-url pattern="index"
+			access="isAnonymous()" />
 		<!-- 拦截所有 ，/*表示一级目录，/**两级目录 -->
 		<security:intercept-url pattern="/**"
 			access="isFullyAuthenticated()" />
-		<security:http-basic />
+		<!-- <security:http-basic /> -->
+		<security:form-login />
 	</security:http>
 
 	<!-- 认证管理器，存放认证信息 -->
@@ -26,7 +31,7 @@
 		<security:authentication-provider>
 			<security:user-service>
 				<!-- 用户amdin，密码1，权限是USER角色,必须ROLE_开头 -->
-				<security:user name="admin" password="1"
+				<security:user name="a" password="1"
 					authorities="ROLE_USER" />
 			</security:user-service>
 		</security:authentication-provider>
