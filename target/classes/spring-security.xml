@@ -39,12 +39,8 @@
 
 	<!-- 认证管理器，存放认证信息 -->
 	<security:authentication-manager>
-		<security:authentication-provider>
-			<security:user-service>
-				<!-- 用户amdin，密码1，权限是USER角色,必须ROLE_开头 -->
-				<security:user name="a" password="1" authorities="ROLE_A" />
-				<security:user name="b" password="1" authorities="ROLE_B" />
-			</security:user-service>
-		</security:authentication-provider>
+		<security:authentication-provider user-service-ref="customUserDetailsService" />
 	</security:authentication-manager>
+	
+	<bean id="customUserDetailsService" class="com.xywei.springsecurity.CustomUserDetailsService" />
 </beans>
