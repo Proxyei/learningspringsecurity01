@@ -30,5 +30,11 @@ public class UserController {
 
 		return "user/userupdate";
 	}
+	
+	@RequestMapping("/Login")
+	public String userLogin() {
+
+		return "user/userlogin";
+	}
 
 }

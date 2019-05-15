@@ -7,8 +7,6 @@
 <title>首页</title>
 </head>
 <body>
-	<h4>${username},helloworld!</h4>
-	<br />
 	<div>
 		<a href="${pageContext.request.contextPath}/user/add">用户添加</a>
 	</div>

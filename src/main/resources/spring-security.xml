@@ -19,11 +19,15 @@
 			access="isAnonymous()" />
 		<security:intercept-url pattern="index"
 			access="isAnonymous()" />
+			<!-- 防止登录URL死循环 -->
+			<security:intercept-url pattern="/user/Login" access="permitAll()"/>
 		<!-- 拦截所有 ，/*表示一级目录，/**两级目录 -->
 		<security:intercept-url pattern="/**"
 			access="isFullyAuthenticated()" />
 		<!-- <security:http-basic /> -->
-		<security:form-login />
+		<!-- 定制登录页面login-page（也就是认证跳转的页面），登录请求URL（也就是usernamepasswordAuthenticationFilter校验的URL） -->
+		<security:form-login login-page="/user/Login" login-processing-url="/user/userLogin"/>
+		<security:csrf disabled="true"/>
 	</security:http>
 
 	<!-- 认证管理器，存放认证信息 -->
